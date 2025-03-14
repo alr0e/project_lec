@@ -1,0 +1,26 @@
+[
+  {
+      "name": "Alreem",
+      "surname": "Ali",
+      "username": "Alreem_Ali",
+      "password": "Password@123",
+      "role": "student",
+      "completedCourses": []
+  },
+  {
+      "name": "Aysha",
+      "surname": "Hamad",
+      "username": "Aysha_Hamad",
+      "password": "Password@124",
+      "role": "instructor",
+      "completedCourses": []
+  },
+  {
+      "name": "Sara",
+      "surname": "Saleh",
+      "username": "Sara_Saleh",
+      "password": "Password@125",
+      "role": "admin",
+      "completedCourses": []
+  }
+]

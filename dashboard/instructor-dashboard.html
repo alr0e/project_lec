@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instructor Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome, <span id="instructorName"></span>!</h1>
+        <button onclick="logout()">Logout</button>
+    </header>
+
+    <main>
+        <h2>Assigned Courses</h2>
+        <ul id="assignedCourses"></ul>
+    </main>
+
+    <script>
+        const user = JSON.parse(sessionStorage.getItem("loggedInUser"));
+        if (!user || user.role !== "instructor") {
+            alert("Access Denied! Redirecting to login...");
+            window.location.href = "login.html";
+        } else {
+            document.getElementById("instructorName").textContent = user.name;
+            const courseList = document.getElementById("assignedCourses");
+
+            if (!user.assignedCourses || user.assignedCourses.length === 0) {
+                courseList.innerHTML = "<li>No assigned courses yet.</li>";
+            } else {
+                user.assignedCourses.forEach(course => {
+                    const listItem = document.createElement("li");
+                    listItem.textContent = `${course.courseName}`;
+                    courseList.appendChild(listItem);
+                });
+            }
+        }
+
+        function logout() {
+            sessionStorage.clear();
+            alert("You have been logged out.");
+            window.location.href = "../login/login.html"; 
+        }
+    </script>
+</body>
+</html>
